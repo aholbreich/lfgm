@@ -13,7 +13,7 @@
 
 	<modules>
 		<module>../org.holbreich.lfgm</module>
-		<module>../org.holbreich.lfgm.targetp</module>
+		<module>../org.holbreich.lfgm.target</module>
 		<module>../org.holbreich.lfgm.feature</module>
 		<module>../org.holbreich.lfgm.eclipse-repository</module>
 	</modules>
