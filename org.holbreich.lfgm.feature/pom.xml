@@ -4,7 +4,7 @@
     <artifactId>parent</artifactId>
     <groupId>org.holbreich.lfgm</groupId>
     <version>0.0.1-SNAPSHOT</version>
-    <relativePath>..</relativePath>
+    <relativePath>../org.holbreich.lfgm.parent/pom.xml</relativePath>
   </parent>
   <artifactId>org.holbreich.lfgm.feature</artifactId>
 </project>

@@ -13,7 +13,7 @@
 
 	<modules>
 		<module>../org.holbreich.lfgm</module>
-		<module>../org.holbreich.lfgm.target</module>
+		<module>../org.holbreich.lfgm.targetp</module>
 		<module>../org.holbreich.lfgm.feature</module>
 		<module>../org.holbreich.lfgm.eclipse-repository</module>
 	</modules>
@@ -28,8 +28,8 @@
 					<resolver>p2</resolver>
 					<target>
 						<artifact>
-							<groupId>example.group</groupId>
-							<artifactId>target-definition</artifactId>
+							<groupId>org.holbreich.lfgm</groupId>
+							<artifactId>targetp</artifactId>
 							<version>1.0.0-SNAPSHOT</version>
 							<classifier>helios</classifier>
 						</artifact>

@@ -4,10 +4,9 @@
     <artifactId>parent</artifactId>
     <groupId>org.holbreich.lfgm</groupId>
     <version>0.0.1-SNAPSHOT</version>
-    <relativePath>..</relativePath>
-    <packaging>pom</packaging>
+    <relativePath>../org.holbreich.lfgm.parent/pom.xml</relativePath>
   </parent>
-  <artifactId>org.holbreich.lfgm.target</artifactId>
+  <artifactId>targetp</artifactId>
   
   <build>
 		<plugins>

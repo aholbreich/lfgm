@@ -11,50 +11,7 @@
     	<artifactId>parent</artifactId>
     	<groupId>org.holbreich.lfgm</groupId>
     	<version>0.0.1-SNAPSHOT</version>
-    	<relativePath>..</relativePath>
+    	<relativePath>../org.holbreich.lfgm.parent/pom.xml</relativePath>
   	</parent>
-
-	<!-- Additional not default repositories  -->
-	<repositories>
-		<repository>
-			<id>eclipse-indigo</id>
-			<layout>p2</layout>
-			<url>http://download.eclipse.org/releases/indigo</url>
-		</repository>
-	</repositories>
-
-	<!-- Everything for Build process -->
-	<build>
-		<plugins>
-
-			<plugin>
-				<groupId>org.eclipse.tycho</groupId>
-				<artifactId>tycho-maven-plugin</artifactId>
-				<version>0.13.0</version>
-				<extensions>true</extensions>
-			</plugin>
-
-
-			<plugin>
-				<groupId>org.eclipse.tycho</groupId>
-				<artifactId>target-platform-configuration</artifactId>
-				<version>0.13.0</version>
-				<configuration>
-					<environments>
-						<environment>
-							<os>win32</os>
-							<ws>win32</ws>
-							<arch>x86</arch>
-						</environment>
-						<environment>
-							<os>win32</os>
-							<ws>win32</ws>
-							<arch>x86_64</arch>
-						</environment>
-					</environments>
-				</configuration>
-			</plugin>
-		</plugins>
-	</build>
 
 </project>
