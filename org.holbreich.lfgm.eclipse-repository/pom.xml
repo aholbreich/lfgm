@@ -6,8 +6,7 @@
     <version>0.0.1-SNAPSHOT</version>
     <relativePath>../org.holbreich.lfgm.parent/pom.xml</relativePath>
   </parent>
-  <groupId>org.holbreich.lfgm.eclipse-repository</groupId>
-  <artifactId>org.holbreich.lfgm.eclipse-repository</artifactId>
+  <artifactId>eclipse-repository</artifactId>
   <packaging>eclipse-repository</packaging>
   
   <build>
