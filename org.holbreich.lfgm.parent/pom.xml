@@ -29,9 +29,9 @@
 					<target>
 						<artifact>
 							<groupId>org.holbreich.lfgm</groupId>
-							<artifactId>targetp</artifactId>
+							<artifactId>target-platform</artifactId>
 							<version>1.0.0-SNAPSHOT</version>
-							<classifier>helios</classifier>
+							<classifier>indigo</classifier>
 						</artifact>
 					</target>
 					<ignoreTychoRepositories>true</ignoreTychoRepositories>
@@ -45,7 +45,7 @@
 							<os>linux</os>
 							<ws>gtk</ws>
 							<arch>x86</arch>
-  					</environment>
+  						</environment>
 					</environments>
 				</configuration>
 			</plugin>

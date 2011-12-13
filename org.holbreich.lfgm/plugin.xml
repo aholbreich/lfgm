@@ -24,11 +24,18 @@
          point="org.eclipse.core.runtime.products">
       <product
             application="org.holbreich.lfgm.application"
-            name="Hello RCP">
+            name="Example Product">
          <property
-               name="windowImages"
-               value="icons/alt_window_16.gif,icons/alt_window_32.gif">
+               name="appName"
+               value="Example Product">
          </property>
+      </product>
+   </extension>
+   <extension
+         point="org.eclipse.core.runtime.products">
+      <product
+            application="org.holbreich.lfgm.prodextensionid"
+            name="RCP Life Game">
       </product>
    </extension>
 

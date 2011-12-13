@@ -6,8 +6,8 @@
     <version>0.0.1-SNAPSHOT</version>
     <relativePath>../org.holbreich.lfgm.parent/pom.xml</relativePath>
   </parent>
-  <artifactId>targetp</artifactId>
-  
+  <artifactId>target-platform</artifactId>
+  <version>1.0.0-SNAPSHOT</version>
   <build>
 		<plugins>
 			<plugin>
@@ -24,9 +24,9 @@
 						<configuration>
 							<artifacts>
 								<artifact>
-									<file>helios.target</file>
+									<file>indigo.target</file>
 									<type>target</type>
-									<classifier>helios</classifier>
+									<classifier>indigo</classifier>
 								</artifact>
 							</artifacts>
 						</configuration>
