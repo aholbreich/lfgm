@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?pde version="3.5"?>
+
+<product name="Example Product" uid="org.holbreich.lfgm.product" id="org.holbreich.lfgm.product" application="org.holbreich.lfgm.application" version="0.0.1.qualifier" useFeatures="true" includeLaunchers="true">
+
+
+   <configIni use="default">
+   </configIni>
+
+   <launcherArgs>
+   </launcherArgs>
+
+   <windowImages/>
+
+
+   <launcher>
+      <solaris/>
+      <win useIco="false">
+         <bmp/>
+      </win>
+   </launcher>
+
+
+   <vm>
+   </vm>
+
+
+   <plugins>
+   </plugins>
+
+   <features>
+      <feature id="org.holbreich.lfgm.feature"/>
+   </features>
+
+   <configurations>
+      <plugin id="org.eclipse.core.runtime" autoStart="true" startLevel="4" />
+      <plugin id="org.eclipse.equinox.common" autoStart="true" startLevel="2" />
+      <plugin id="org.eclipse.equinox.ds" autoStart="true" startLevel="2" />
+      <plugin id="org.eclipse.equinox.p2.reconciler.dropins" autoStart="true" startLevel="4" />
+      <plugin id="org.eclipse.equinox.simpleconfigurator" autoStart="true" startLevel="1" />
+      <plugin id="org.eclipse.update.configurator" autoStart="true" startLevel="4" />
+      <property name="org.eclipse.update.reconcile" value="false" />
+   </configurations>
+
+</product>

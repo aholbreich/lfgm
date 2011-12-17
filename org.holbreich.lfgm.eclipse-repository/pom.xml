@@ -3,7 +3,7 @@
   <parent>
     <artifactId>parent</artifactId>
     <groupId>org.holbreich.lfgm</groupId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>1.0.0-SNAPSHOT</version>
     <relativePath>../org.holbreich.lfgm.parent/pom.xml</relativePath>
   </parent>
   <artifactId>eclipse-repository</artifactId>
@@ -32,4 +32,5 @@
 			</plugin>
 		</plugins>
 	</build>
+  <version>1.0.0-SNAPSHOT</version>
 </project>

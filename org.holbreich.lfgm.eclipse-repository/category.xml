@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <category-def name="example_category_id" label="Example Category">
+      <description>
+         Description of example category
+      </description>
+   </category-def>
+</site>
