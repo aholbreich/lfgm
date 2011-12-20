@@ -11,35 +11,43 @@ import org.eclipse.ui.PlatformUI;
  */
 public class Application implements IApplication {
 
-	/* (non-Javadoc)
-	 * @see org.eclipse.equinox.app.IApplication#start(org.eclipse.equinox.app.IApplicationContext)
+	/**
+	 * {@inheritDoc}
 	 */
+	@Override
 	public Object start(IApplicationContext context) throws Exception {
 		Display display = PlatformUI.createDisplay();
 		try {
 			int returnCode = PlatformUI.createAndRunWorkbench(display, new ApplicationWorkbenchAdvisor());
-			if (returnCode == PlatformUI.RETURN_RESTART)
+			if (returnCode == PlatformUI.RETURN_RESTART) {
 				return IApplication.EXIT_RESTART;
-			else
+			} else {
 				return IApplication.EXIT_OK;
-		} finally {
+			}
+		}
+		finally {
 			display.dispose();
 		}
-		
+
 	}
 
-	/* (non-Javadoc)
-	 * @see org.eclipse.equinox.app.IApplication#stop()
+	/**
+	 * {@inheritDoc}
 	 */
+	@Override
 	public void stop() {
-		if (!PlatformUI.isWorkbenchRunning())
+		if (!PlatformUI.isWorkbenchRunning()) {
 			return;
+		}
 		final IWorkbench workbench = PlatformUI.getWorkbench();
 		final Display display = workbench.getDisplay();
 		display.syncExec(new Runnable() {
+
+			@Override
 			public void run() {
-				if (!display.isDisposed())
+				if (!display.isDisposed()) {
 					workbench.close();
+				}
 			}
 		});
 	}

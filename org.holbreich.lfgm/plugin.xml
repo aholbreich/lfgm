@@ -5,7 +5,8 @@
    <extension
          id="application"
          point="org.eclipse.core.runtime.applications">
-      <application>
+      <application
+            visible="true">
          <run
                class="org.holbreich.lfgm.Application">
          </run>
@@ -14,10 +15,33 @@
    <extension
          point="org.eclipse.ui.perspectives">
       <perspective
-            name="RCP Perspective"
+            name="Main Perespective"
             class="org.holbreich.lfgm.Perspective"
             id="org.holbreich.lfgm.perspective">
       </perspective>
+   </extension>
+   <extension
+         point="org.eclipse.core.runtime.products">
+      <product
+            application="org.holbreich.lfgm.prodextensionid"
+            name="RCP Life Game">
+      </product>
+   </extension>
+   <extension
+         point="org.eclipse.ui.views">
+      <view
+            category="org.holbreich.lfgm"
+            class="org.holbreich.lfgm.views.MainGameView"
+            icon="icons/sample.gif"
+            id="org.holbreich.lfgm.views.MainGameView"
+            name="Sample View">
+      </view>
+   </extension>
+   <extension
+         point="org.eclipse.help.contexts">
+      <contexts
+            file="contexts.xml">
+      </contexts>
    </extension>
    <extension
          id="product"
@@ -29,13 +53,6 @@
                name="appName"
                value="Example Product">
          </property>
-      </product>
-   </extension>
-   <extension
-         point="org.eclipse.core.runtime.products">
-      <product
-            application="org.holbreich.lfgm.prodextensionid"
-            name="RCP Life Game">
       </product>
    </extension>
 
