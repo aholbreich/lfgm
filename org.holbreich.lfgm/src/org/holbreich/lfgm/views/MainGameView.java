@@ -98,7 +98,7 @@ public class MainGameView extends ViewPart implements PaintListener, IModelChang
 	@Override
 	public void mouseDown(MouseEvent e) {
 		Activator.getDefault().logInfo("Mouse event "+e.x +" : "+e.y);
-		ModelHolder.getInstance().getModel().initNewElementAt(renderer)
+		//ModelHolder.getInstance().getModel().initNewElementAt(renderer)
 		
 	}
 
