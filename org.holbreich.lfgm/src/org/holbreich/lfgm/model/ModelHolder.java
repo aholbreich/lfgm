@@ -1,5 +1,6 @@
 package org.holbreich.lfgm.model;
 
+
 /**
  * Access point to the model. Holds referenc to the model.
  * 
@@ -10,6 +11,8 @@ public class ModelHolder {
 
 	private IGameFieldModel	fieldModel;
 	private static ModelHolder instance;
+	
+	private UICOnfiguration config;
 
 	/**
 	 * Singleton.

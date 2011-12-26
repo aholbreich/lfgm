@@ -1,5 +1,7 @@
 package org.holbreich.lfgm.model;
 
+import org.holbreich.lfgm.Activator;
+
 /**
  * 
  * Represents Game Field
@@ -37,6 +39,7 @@ public class ArrayGameField extends AbstractListenerHolder<IModelChangeListener>
 	public void nextTurn() {
 		turns++;
 		
+		Activator.getDefault().logInfo("Turn "+turns);
 	}
 
 	@Override

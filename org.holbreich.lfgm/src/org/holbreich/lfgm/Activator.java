@@ -1,5 +1,8 @@
 package org.holbreich.lfgm;
 
+import org.eclipse.core.runtime.ILog;
+import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Status;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
@@ -15,6 +18,8 @@ public class Activator extends AbstractUIPlugin {
 	// The shared instance
 	private static Activator plugin;
 	
+	private static ILog logger;
+	
 	/**
 	 * The constructor
 	 */
@@ -22,12 +27,15 @@ public class Activator extends AbstractUIPlugin {
 	}
 
 
+	@Override
 	public void start(BundleContext context) throws Exception {
 		super.start(context);
 		plugin = this;
+		getLog();
 	}
 
 
+	@Override
 	public void stop(BundleContext context) throws Exception {
 		plugin = null;
 		super.stop(context);
@@ -52,4 +60,47 @@ public class Activator extends AbstractUIPlugin {
 	public static ImageDescriptor getImageDescriptor(String path) {
 		return imageDescriptorFromPlugin(PLUGIN_ID, path);
 	}
+	
+	/**
+	 * 
+	 * @param message
+	 */
+	public static void logError(String message, Throwable e)
+	{
+		IStatus status = new Status(IStatus.ERROR, Activator.PLUGIN_ID, message,e);
+		getLogger().log(status); 
+	}
+	
+	
+	/**
+	 * 
+	 * @param message
+	 */
+	public static void logInfo(String message)
+	{
+		IStatus status = new Status(IStatus.INFO, Activator.PLUGIN_ID, message);
+		getLogger().log(status); 
+	}
+	
+	/**
+	 * 
+	 * @param message
+	 */
+	public static void logWarning(String message)
+	{
+		IStatus status = new Status(IStatus.WARNING, Activator.PLUGIN_ID, message);
+		getLogger().log(status); 
+	}
+
+
+	private static ILog getLogger() {
+		if(logger ==null)
+		{
+			logger = Activator.getDefault().getLog();
+			//logger.addLogListener(new LFGMLogListener());
+			
+		}
+		return logger;
+	}
+	
 }

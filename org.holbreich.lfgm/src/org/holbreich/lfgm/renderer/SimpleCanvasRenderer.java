@@ -19,6 +19,7 @@ public class SimpleCanvasRenderer implements IGameRenderer {
 	private static final int	with	= 5;
 
 	
+	
 	private IGameFieldModel model;
 
 	private Canvas	canvas;
@@ -35,10 +36,6 @@ public class SimpleCanvasRenderer implements IGameRenderer {
 		// Create the image to fill the canvas
         Image image = new Image(canvas.getDisplay(), canvas.getBounds());
         GC gcImage = new GC(image); // Set up the offscreen gc
-
-        // Draw the background
-//        gcImage.setBackground(gc.getBackground());
-//        gcImage.fillRectangle(image.getBounds());
 		
 		for(int x=0; x<model.getWidth();x++)
 		{
