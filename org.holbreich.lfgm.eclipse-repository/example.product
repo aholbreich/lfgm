@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?pde version="3.5"?>
 
-<product name="Example Product" uid="org.holbreich.lfgm.product" id="org.holbreich.lfgm.product" application="org.holbreich.lfgm.application" version="0.0.1.qualifier" useFeatures="true" includeLaunchers="true">
-
+<product name="Shuron&apos;s Life Game" uid="org.holbreich.lfgm.product" id="org.holbreich.lfgm.product" application="org.holbreich.lfgm.application" version="0.0.1.qualifier" useFeatures="true" includeLaunchers="true">
 
    <configIni use="default">
    </configIni>
@@ -12,7 +11,6 @@
 
    <windowImages/>
 
-
    <launcher>
       <solaris/>
       <win useIco="false">
@@ -20,10 +18,8 @@
       </win>
    </launcher>
 
-
    <vm>
    </vm>
-
 
    <plugins>
    </plugins>

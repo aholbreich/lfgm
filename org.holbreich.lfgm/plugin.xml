@@ -48,12 +48,36 @@
          point="org.eclipse.core.runtime.products">
       <product
             application="org.holbreich.lfgm.application"
-            name="Example Product">
+            name="Shuron&apos;s Life Game">
          <property
                name="appName"
-               value="Example Product">
+               value="Shuron&apos;s Life Game">
          </property>
       </product>
+   </extension>
+   <extension
+         point="org.eclipse.ui.commands">
+      <command
+            defaultHandler="org.holbreich.lfgm.handler.RunHandler"
+            id="org.holbreich.lfgm.command.run"
+            name="Run Game">
+      </command>
+   </extension>
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            allPopups="false"
+            locationURI="toolbar:org.eclipse.ui.main.toolbar">
+         <toolbar
+               id="org.holbreich.lfgm.toolbar1">
+            <command
+                  commandId="org.holbreich.lfgm.command.run"
+                  icon="icons/alt_window_16.gif"
+                  label="Run game"
+                  style="push">
+            </command>
+         </toolbar>
+      </menuContribution>
    </extension>
 
 </plugin>
