@@ -10,7 +10,6 @@ import org.eclipse.swt.widgets.Canvas;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.part.ViewPart;
-import org.holbreich.lfgm.Activator;
 import org.holbreich.lfgm.model.ArrayGameField;
 import org.holbreich.lfgm.model.IModelChangeListener;
 import org.holbreich.lfgm.model.ModelHolder;
@@ -85,7 +84,14 @@ public class MainGameView extends ViewPart implements PaintListener, IModelChang
 
 	@Override
 	public void modelChanged() {
-		canvas.redraw();
+		canvas.getDisplay().syncExec(new Runnable() {
+			
+			@Override
+			public void run() {
+				canvas.redraw();
+			}
+		});
+		
 		
 	}
 
@@ -97,7 +103,7 @@ public class MainGameView extends ViewPart implements PaintListener, IModelChang
 
 	@Override
 	public void mouseDown(MouseEvent e) {
-		Activator.getDefault().logInfo("Mouse event "+e.x +" : "+e.y);
+	//	Activator.getDefault().logInfo("Mouse event "+e.x +" : "+e.y);
 		ModelHolder.getInstance().getModel().setAlifeAt(renderer.reverserTranslate(e.x, e.y));
 		
 	}

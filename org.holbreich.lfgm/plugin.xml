@@ -34,7 +34,7 @@
             class="org.holbreich.lfgm.views.MainGameView"
             icon="icons/sample.gif"
             id="org.holbreich.lfgm.views.MainGameView"
-            name="Sample View">
+            name="Game View">
       </view>
    </extension>
    <extension
