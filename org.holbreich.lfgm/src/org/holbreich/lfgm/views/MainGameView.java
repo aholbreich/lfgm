@@ -48,7 +48,7 @@ public class MainGameView extends ViewPart implements PaintListener, IModelChang
 	@Override
 	public void createPartControl(Composite parent) {
 
-		canvas = new Canvas(parent, SWT.NONE);
+		canvas = new Canvas(parent, SWT.NO_BACKGROUND);
 		canvas.addPaintListener(this);
 		canvas.addMouseListener(this);
 
@@ -85,7 +85,7 @@ public class MainGameView extends ViewPart implements PaintListener, IModelChang
 
 	@Override
 	public void modelChanged() {
-		canvas.update();
+		canvas.redraw();
 		
 	}
 
@@ -98,7 +98,7 @@ public class MainGameView extends ViewPart implements PaintListener, IModelChang
 	@Override
 	public void mouseDown(MouseEvent e) {
 		Activator.getDefault().logInfo("Mouse event "+e.x +" : "+e.y);
-		//ModelHolder.getInstance().getModel().initNewElementAt(renderer)
+		ModelHolder.getInstance().getModel().setAlifeAt(renderer.reverserTranslate(e.x, e.y));
 		
 	}
 

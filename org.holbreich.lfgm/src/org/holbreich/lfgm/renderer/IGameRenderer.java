@@ -1,6 +1,7 @@
 package org.holbreich.lfgm.renderer;
 
 import org.eclipse.swt.graphics.GC;
+import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.widgets.Canvas;
 import org.holbreich.lfgm.model.IGameFieldModel;
 
@@ -30,5 +31,13 @@ public interface IGameRenderer {
 	 * @param canvas
 	 */
 	void setMainCanvas(Canvas canvas);
+
+	/**
+	 * Translates x, y canvas coordinates to model coordinates.
+	 * @param x
+	 * @param y
+	 * @return 
+	 */
+	Point reverserTranslate(int x, int y);
 
 }

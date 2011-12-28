@@ -1,5 +1,6 @@
 package org.holbreich.lfgm.model;
 
+import org.eclipse.swt.graphics.Point;
 import org.holbreich.lfgm.Activator;
 
 /**
@@ -52,6 +53,20 @@ public class ArrayGameField extends AbstractListenerHolder<IModelChangeListener>
 	@Override
 	protected void fireOne(IModelChangeListener listener) {
 		listener.modelChanged();
+	}
+
+	@Override
+	public void setAlifeAt(Point modelCoords) {
+		assert modelCoords!=null;
+		
+		this.cells[modelCoords.y][modelCoords.x] = true;
+		fireEvent();
+		
+	}
+
+	@Override
+	public boolean isAlife(int x, int y) {
+		return this.cells[y][x];
 	}
 	
 }

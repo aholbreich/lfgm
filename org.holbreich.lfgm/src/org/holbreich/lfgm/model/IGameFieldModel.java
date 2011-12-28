@@ -1,5 +1,7 @@
 package org.holbreich.lfgm.model;
 
+import org.eclipse.swt.graphics.Point;
+
 /**
  * Common interface for a Life Game field.
  * 
@@ -31,5 +33,19 @@ public interface IGameFieldModel {
 
 	
 	void addListener(IModelChangeListener mainGameView);
+
+	/**
+	 * 
+	 * @param reverserTranslate
+	 */
+	void setAlifeAt(Point reverserTranslate);
+
+	/**
+	 * 
+	 * @param x
+	 * @param y
+	 * @return
+	 */
+	boolean isAlife(int x, int y);
 
 }

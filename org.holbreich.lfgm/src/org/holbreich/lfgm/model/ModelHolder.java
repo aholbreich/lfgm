@@ -12,7 +12,6 @@ public class ModelHolder {
 	private IGameFieldModel	fieldModel;
 	private static ModelHolder instance;
 	
-	private UICOnfiguration config;
 
 	/**
 	 * Singleton.

@@ -9,4 +9,7 @@ package org.holbreich.lfgm.model;
  */
 public class UICOnfiguration {
 
+	public static final int	cell_height	= 5;
+
+	public static final int	cell_with	= 5;
 }
