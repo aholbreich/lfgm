@@ -10,54 +10,39 @@ import org.eclipse.core.runtime.jobs.Job;
 import org.holbreich.lfgm.model.ModelHolder;
 
 /**
- * 
  * Handles this.
- *
- * @author Alexander Holbreich (http://alexander.holbreich.org) 
+ * 
+ * @author Alexander Holbreich (http://alexander.holbreich.org)
  * @version $Rev: 1 $, ${date}$
  */
 public class RunHandler extends AbstractHandler {
 
-
-
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {
-		
-		
-		//Leaving UI thread
-		Job gameRunJob =new Job("running "){
+
+		// Leaving UI thread
+		Job gameRunJob = new Job("running ") {
 
 			@Override
 			protected IStatus run(IProgressMonitor monitor) {
-				
-				while(!ModelHolder.getInstance().getModel().isGameOver())
+
+				while (!ModelHolder.getInstance().getModel().isGameOver())
+				{
+					if (!monitor.isCanceled())
 					{
 						ModelHolder.getInstance().getModel().nextTurn();
-						
 					}
+					else
+					{
+						return Status.CANCEL_STATUS;
+					}
+				}
 				return Status.OK_STATUS;
-			
-			}};
-			gameRunJob.schedule();
-		
-//
-//			@Override
-//			public void run() {
-//				
-//				while(!ModelHolder.getInstance().getModel().isGameOver())
-//				{
-//					ModelHolder.getInstance().getModel().nextTurn();
-//					try {
-//						this.sleep(1);
-//					}
-//					catch (InterruptedException e) {
-//						// TODO aho  Auto-generated catch block
-//						e.printStackTrace();
-//					}
-//				}
-//			}
-//			
-//		}.run();
+
+			}
+		};
+		gameRunJob.schedule();
+
 		return null;
 	}
 

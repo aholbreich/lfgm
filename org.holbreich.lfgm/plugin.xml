@@ -36,6 +36,13 @@
             id="org.holbreich.lfgm.views.MainGameView"
             name="Game View">
       </view>
+      <view
+            category="org.eclipse.ui"
+            class="org.eclipse.ui.internal.progress.ProgressView"
+            id="org.eclipse.ui.views.ProgressView"
+            name="Progress View"
+            restorable="true">
+      </view>
    </extension>
    <extension
          point="org.eclipse.help.contexts">
