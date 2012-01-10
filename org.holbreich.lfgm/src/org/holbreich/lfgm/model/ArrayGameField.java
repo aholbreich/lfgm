@@ -15,6 +15,10 @@ public class ArrayGameField extends AbstractListenerHolder<IModelChangeListener>
 
 	private boolean[][]	cells;
 
+	private int	width;
+
+	private int	height;
+
 	/**
 	 * Creates new game Field with with and height.
 	 * 
@@ -22,7 +26,17 @@ public class ArrayGameField extends AbstractListenerHolder<IModelChangeListener>
 	 * @param height
 	 */
 	public ArrayGameField(int width, int height) {
-		this.cells = new boolean[height][width];
+		this.width = width;
+		this.height = height;
+		this.cells = createNewStandardArray();
+	}
+
+	/**
+	 * Creates and returnes new array.
+	 * @return boolean array.
+	 */
+	private boolean[][] createNewStandardArray() {
+		return new boolean[height][width];
 	}
 
 	@Override
@@ -40,25 +54,33 @@ public class ArrayGameField extends AbstractListenerHolder<IModelChangeListener>
 	public void nextTurn() {
 		turns++;
 
+		boolean[][]	nextTurncells =createNewStandardArray();
+		
 		int neigbours;
 		for (int y = 0; y < getHeight(); y++)
 		{
 			for (int x = 0; x < getWidth(); x++)
 			{
 				neigbours = getNeighboursOf(x, y);
+				
 				if(neigbours==3)
 				{
 					//give birth
-					cells[y][x] =true;
+					nextTurncells[y][x] =true;
 				}
-				else if(neigbours>3 || neigbours<2)
+				else if(neigbours == 2)
+				{
+					//copy state
+					nextTurncells[y][x] = this.cells[y][x];
+				}
+				else
 				{
 					//die...
-					cells[y][x] =false;
+					nextTurncells[y][x] =false;
 				}
 			}
 		}
-
+		this.cells = nextTurncells;
 		Activator.getDefault().logInfo("Turn " + turns);
 
 		fireEvent();
