@@ -34,6 +34,7 @@ public class RunHandler extends AbstractHandler {
 					}
 					else
 					{
+						ModelHolder.getInstance().getModel().reset();
 						return Status.CANCEL_STATUS;
 					}
 				}

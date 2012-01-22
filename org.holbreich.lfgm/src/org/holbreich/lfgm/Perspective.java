@@ -2,7 +2,6 @@ package org.holbreich.lfgm;
 
 import org.eclipse.ui.IPageLayout;
 import org.eclipse.ui.IPerspectiveFactory;
-import org.holbreich.lfgm.views.MainGameView;
 
 /**
  * 
@@ -20,7 +19,8 @@ public class Perspective implements IPerspectiveFactory {
 	@Override
 	public void createInitialLayout(IPageLayout layout) {
 		layout.setEditorAreaVisible(false); // Remove Editor Area
-		layout.setFixed(true);
-		layout.addView(MainGameView.ID, IPageLayout.TOP, IPageLayout.RATIO_MAX, IPageLayout.ID_EDITOR_AREA);
+	//	layout.setFixed(true);
+	//	layout.addView(MainGameView.ID, IPageLayout.TOP, IPageLayout.RATIO_MAX, IPageLayout.ID_EDITOR_AREA);
+		//layout.addView("org.eclipse.ui.views.ProgressView", IPageLayout.BOTTOM, IPageLayout.RATIO_MIN, IPageLayout.ID_EDITOR_AREA);
 	}
 }

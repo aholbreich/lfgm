@@ -138,4 +138,9 @@ public class ArrayGameField extends AbstractListenerHolder<IModelChangeListener>
 		return this.cells[y][x];
 	}
 
+	@Override
+	public void reset() {
+		this.turns=0;
+	}
+
 }

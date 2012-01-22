@@ -48,4 +48,6 @@ public interface IGameFieldModel {
 	 */
 	boolean isAlife(int x, int y);
 
+	void reset();
+
 }
