@@ -69,5 +69,22 @@
 			</plugins>
 		</pluginManagement>
 	</build>
+	
+   <distributionManagement>
+    <repository>
+      <uniqueVersion>false</uniqueVersion>
+      <id>nas_release_repository</id>
+      <name>Shuron's Release Repository</name>
+      <url>http://192.168.0.10:8081/nexus/content/repositories/releases/</url>
+      <layout>default</layout>
+    </repository>
+    <snapshotRepository>
+      <uniqueVersion>true</uniqueVersion>
+      <id>nas_snapshot_repository</id>
+      <name>Propellors Snapshots</name>
+      <url>http://192.168.0.10:8081/nexus/content/repositories/snapshots/</url>
+      <layout>default</layout>
+    </snapshotRepository>
+  </distributionManagement>
 
 </project>
