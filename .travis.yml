@@ -1,5 +1,6 @@
 language: java
-before_script: cd org.holbreich.lfgm
+#changing in to proper dir
+before_script: cd org.holbreich.lfgm.parent
 script: mvn clean install
 jdk:
   - oraclejdk7
