@@ -8,7 +8,6 @@
     <relativePath>../org.holbreich.lfgm.parent/pom.xml</relativePath>
   </parent>
   <artifactId>target-platform</artifactId>
-  <version>1.0.0-SNAPSHOT</version>
   <build>
 		<plugins>
 			<plugin>
