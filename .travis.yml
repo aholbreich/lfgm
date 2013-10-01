@@ -1,4 +1,5 @@
 language: java
+script: ./org.holbreich.lfgm/mvn install -DskipTests=true
 jdk:
   - oraclejdk7
   - openjdk7
