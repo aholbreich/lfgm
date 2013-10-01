@@ -7,5 +7,6 @@ Bundle-Activator: org.holbreich.lfgm.Activator
 Bundle-Vendor: Alexander Holbreich (http://alexander.holbreich.org)
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7,
+ JavaSE-1.6
 Bundle-ActivationPolicy: lazy
