@@ -1,5 +1,6 @@
 language: java
-script: ./org.holbreich.lfgm/mvn install -DskipTests=true
+before_script: cd org.holbreich.lfgm
+script: mvn clean install
 jdk:
   - oraclejdk7
   - openjdk7
