@@ -1,6 +1,8 @@
 package org.holbreich.lfgm.ui;
 
 import javafx.animation.AnimationTimer;
+import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.input.MouseEvent;
@@ -10,44 +12,34 @@ import org.holbreich.lfgm.model.GameField;
 
 /**
  * Canvas-based renderer and input handler. Extends Region so the canvas
- * fills whatever space the layout gives it and the grid adapts on resize.
+ * fills whatever space the layout assigns and the grid adapts on resize.
  */
 public class GameView extends Region {
 
-    private static final Color BG_COLOR   = Color.rgb(18, 18, 18);
-    private static final Color CELL_COLOR = Color.rgb(80, 200, 120);
-    private static final Color GRID_COLOR = Color.rgb(35, 35, 35);
+    private static final Color  BG_COLOR        = Color.rgb(18, 18, 18);
+    private static final Color  CELL_COLOR       = Color.rgb(80, 200, 120);
+    private static final Color  GRID_COLOR       = Color.rgb(35, 35, 35);
+    private static final double RANDOM_DENSITY   = 0.3;
 
     private final int cellSize;
     private final int cellStride;
 
     private final Canvas canvas = new Canvas();
-    private GameField field;
+    private GameField field     = new GameField(1, 1);
+    private boolean firstLayout = true;
 
-    private boolean running = false;
+    private final BooleanProperty running = new SimpleBooleanProperty(false);
     private long intervalNanos = 100_000_000L;
-    private long lastTick = 0;
+    private long lastTick      = 0;
     private Runnable onTick;
 
     public GameView(int cellSize) {
-        this.cellSize = cellSize;
+        this.cellSize   = cellSize;
         this.cellStride = cellSize + 1;
         getChildren().add(canvas);
-
         canvas.setOnMouseClicked(this::handleClick);
         canvas.setOnMouseDragged(this::handleClick);
-
-        new AnimationTimer() {
-            @Override
-            public void handle(long now) {
-                if (running && now - lastTick >= intervalNanos) {
-                    field.nextTurn();
-                    lastTick = now;
-                    if (onTick != null) onTick.run();
-                }
-                render();
-            }
-        }.start();
+        startAnimationLoop();
     }
 
     @Override
@@ -62,54 +54,66 @@ public class GameView extends Region {
         int newCols = Math.max(1, (int) (w / cellStride));
         int newRows = Math.max(1, (int) (h / cellStride));
 
-        if (field == null || newCols != field.getWidth() || newRows != field.getHeight()) {
-            field = new GameField(newCols, newRows);
-            field.randomize(0.3);
-            if (onTick != null) onTick.run();
+        if (firstLayout) {
+            field = GameField.randomized(newCols, newRows, RANDOM_DENSITY);
+            firstLayout = false;
+        } else if (newCols != field.getWidth() || newRows != field.getHeight()) {
+            field.resize(newCols, newRows);
         }
     }
 
-    // --- public API used by GameApp ---
+    // --- public API ---
 
-    public void setRunning(boolean running) { this.running = running; }
-    public boolean isRunning()              { return running; }
-    public int getTurns()                   { return field != null ? field.getTurns() : 0; }
-    public void setOnTick(Runnable onTick)  { this.onTick = onTick; }
+    public BooleanProperty runningProperty()    { return running; }
+    public boolean isRunning()                  { return running.get(); }
+    public void setRunning(boolean r)           { running.set(r); }
+    public int getTurns()                       { return field.getTurns(); }
+    public void setOnTick(Runnable onTick)      { this.onTick = onTick; }
 
     public void setSpeed(double generationsPerSecond) {
         intervalNanos = (long) (1_000_000_000.0 / generationsPerSecond);
     }
 
     public void step() {
-        if (!running && field != null) {
-            field.nextTurn();
-            if (onTick != null) onTick.run();
-        }
+        if (!isRunning()) advanceTurn();
     }
 
     public void randomize() {
-        if (field != null) field.randomize(0.3);
-        if (onTick != null) onTick.run();
+        field.randomize(RANDOM_DENSITY);
+        notifyTick();
     }
 
-    public void reset() {
-        if (field != null) field.reset();
-        if (onTick != null) onTick.run();
+    // --- private ---
+
+    private void startAnimationLoop() {
+        new AnimationTimer() {
+            @Override
+            public void handle(long now) {
+                if (isRunning() && now - lastTick >= intervalNanos) {
+                    advanceTurn();
+                    lastTick = now;
+                }
+                render();
+            }
+        }.start();
     }
 
-    // --- input ---
+    private void advanceTurn() {
+        field.nextTurn();
+        notifyTick();
+    }
+
+    private void notifyTick() {
+        if (onTick != null) onTick.run();
+    }
 
     private void handleClick(MouseEvent e) {
-        if (field == null) return;
         int x = (int) (e.getX() / cellStride);
         int y = (int) (e.getY() / cellStride);
         field.toggle(x, y);
     }
 
-    // --- rendering ---
-
     private void render() {
-        if (field == null) return;
         GraphicsContext gc = canvas.getGraphicsContext2D();
         double w = canvas.getWidth();
         double h = canvas.getHeight();
@@ -125,11 +129,9 @@ public class GameView extends Region {
             gc.strokeLine(0, y * cellStride, w, y * cellStride);
 
         gc.setFill(CELL_COLOR);
-        for (int y = 0; y < field.getHeight(); y++) {
-            for (int x = 0; x < field.getWidth(); x++) {
+        for (int y = 0; y < field.getHeight(); y++)
+            for (int x = 0; x < field.getWidth(); x++)
                 if (field.isAlive(x, y))
                     gc.fillRect(x * cellStride + 1, y * cellStride + 1, cellSize, cellSize);
-            }
-        }
     }
 }
