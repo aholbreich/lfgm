@@ -10,23 +10,18 @@ import javafx.scene.control.Slider;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
-import org.holbreich.lfgm.model.GameField;
 import org.holbreich.lfgm.ui.GameView;
 
 public class GameApp extends Application {
 
-    private static final int COLS      = 120;
-    private static final int ROWS      = 80;
     private static final int CELL_SIZE = 8;
 
     @Override
     public void start(Stage stage) {
-        GameField field = new GameField(COLS, ROWS);
-        field.randomize(0.3);
-        GameView view = new GameView(field, CELL_SIZE);
+        GameView view = new GameView(CELL_SIZE);
 
         Label genLabel = new Label("Gen: 0");
-        view.setOnTick(() -> genLabel.setText("Gen: " + field.getTurns()));
+        view.setOnTick(() -> genLabel.setText("Gen: " + view.getTurns()));
 
         Button startStop = new Button("Start");
         startStop.setMinWidth(60);
@@ -41,10 +36,9 @@ public class GameApp extends Application {
 
         Button random = new Button("Random");
         random.setOnAction(e -> {
-            field.randomize(0.3);
+            view.randomize();
             view.setRunning(false);
             startStop.setText("Start");
-            genLabel.setText("Gen: 0");
         });
 
         Button reset = new Button("Reset");
@@ -75,11 +69,9 @@ public class GameApp extends Application {
         root.setTop(toolbar);
         root.setCenter(view);
 
-        Scene scene = new Scene(root);
         stage.setTitle("Life Game");
-        stage.setScene(scene);
-        stage.sizeToScene();
-        stage.setResizable(false);
+        stage.setScene(new Scene(root));
+        stage.setMaximized(true);
         stage.show();
     }
 }

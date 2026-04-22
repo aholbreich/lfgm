@@ -10,3 +10,6 @@ build/
 .classpath
 .project
 .settings/
+
+# Legacy Eclipse RCP modules (kept on master branch)
+org.holbreich.lfgm*/
