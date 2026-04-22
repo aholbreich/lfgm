@@ -1,1 +1,12 @@
-/gradle/
+# Gradle build output and local cache
+build/
+.gradle/
+
+# IntelliJ IDEA
+.idea/
+*.iml
+
+# Eclipse IDE metadata
+.classpath
+.project
+.settings/
