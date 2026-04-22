@@ -1,0 +1,42 @@
+plugins {
+    id 'java'
+    id 'application'
+    id 'org.openjfx.javafxplugin' version '0.1.0'
+}
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(21)
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+javafx {
+    version = '21'
+    modules = ['javafx.controls']
+}
+
+application {
+    mainClass = 'org.holbreich.lfgm.Main'
+}
+
+tasks.register('jpackage', Exec) {
+    dependsOn installDist
+    def inputDir  = layout.buildDirectory.dir('install/lfgm/lib').get().asFile
+    def outputDir = layout.buildDirectory.dir('dist').get().asFile
+    doFirst { outputDir.mkdirs() }
+    commandLine(
+        'jpackage',
+        '--input',       inputDir,
+        '--main-jar',    'lfgm.jar',
+        '--main-class',  'org.holbreich.lfgm.Main',
+        '--java-options','--module-path $APPDIR --add-modules javafx.controls,javafx.graphics,javafx.base',
+        '--name',        'lfgm',
+        '--app-version', '1.0',
+        '--description', "Conway's Game of Life",
+        '--dest',        outputDir
+    )
+}
