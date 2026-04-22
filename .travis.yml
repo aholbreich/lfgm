@@ -1,7 +1,0 @@
-language: java
-before_script: cd org.holbreich.lfgm.parent
-script: mvn clean install
-jdk:
-  - oraclejdk7
-  - openjdk7
-  - openjdk6
