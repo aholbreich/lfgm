@@ -63,5 +63,5 @@ For `.msi` output, [WiX Toolset 3.x](https://wixtoolset.org/) must be installed 
 
 ## History
 
-The original version was an Eclipse RCP plugin built with Maven Tycho (see `master` branch).
-This branch rewrites the UI in JavaFX with a plain Gradle build.
+The original version was an Eclipse RCP plugin built with Maven Tycho, targeting Eclipse Indigo (2011).
+It is preserved for historical reference under the [eclipse_rcp_historic](https://github.com/aholbreich/lfgm/releases/tag/eclipse_rcp_historic) release.

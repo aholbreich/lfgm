@@ -12,6 +12,7 @@ public class GameField {
     private final int height;
     private int turns;
     private Runnable onChange;
+    private final Random random = new Random();
 
     public GameField(int width, int height) {
         this.width = width;
@@ -54,11 +55,10 @@ public class GameField {
     }
 
     public void randomize(double density) {
-        Random rnd = new Random();
         turns = 0;
         for (int y = 0; y < height; y++)
             for (int x = 0; x < width; x++)
-                cells[y][x] = rnd.nextDouble() < density;
+                cells[y][x] = random.nextDouble() < density;
         notifyChange();
     }
 
